@@ -92,7 +92,7 @@
   // ./components/xxxx/xxxx
 
   // 导入Star
-  import Star from "../Star/Star"
+  import Star from "components/Star/Star"
 
   export default {
     data() {
