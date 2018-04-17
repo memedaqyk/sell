@@ -5,47 +5,54 @@ import App from './App'
 import VueRouter from 'vue-router'
 import Axios from 'Axios'
 
-import Goods from './components/Goods/Goods'
-import Ratings from './components/Ratings/Ratrings'
-import Seller from './components/Seller/Seller'
+// 1、导入组件
+import Goods from "components/Goods/Goods"
+import Ratings from "components/Ratings/Ratings"
+import Seller from "components/Seller/Seller"
 
 
 Vue.config.productionTip = false
 
-//如果在其他组件中使用axios命令,需要改写Vue原型属性
+// 安装vue-router插件
+Vue.use(VueRouter);
+// 如果在其他组件中使用axios命令，需要改写为Vue原型属性
 Vue.prototype.$axios = Axios;
 
-Vue.use(VueRouter);
 
+// 2、定义路由
 const routes = [
   {
     path: '/',
-    redirect: '/goods'
+    // 重定向
+    redirect: '/goods'	// '/' ==> '/goods'
   },
   {
-    path: "/goods",
+    path:'/goods',
     component: Goods
   },
   {
-    path: "/ratings",
+    path:'/ratings',
     component: Ratings
   },
   {
-    path: "/seller",
+    path:'/seller',
     component: Seller
   }
-
 ];
 
+// 3. 创建 router 实例
 const router = new VueRouter({
   routes,
+  // 选中后的类名 (默认值是router-link-active)
   linkActiveClass: 'active'
-});
+})
+
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  components: {App},
   template: '<App/>',
+  components: { App },
+  // 4. 创建和挂载根实例
   router
 })
